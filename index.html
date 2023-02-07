@@ -18,11 +18,12 @@
   </head>
   <body>
     <main class="container pt-5 d-flex flex-column align-items-center">
-      <form action="" class="row w-25">
+      <form action="" class="row">
         <div class="input-group mb-3">
           <span class="input-group-text" id="date-selector">Date</span>
           <input
             type="date"
+            id="date"
             class="form-control text-center"
             placeholder="date"
             aria-label="date"
@@ -32,9 +33,16 @@
         </div>
       </form>
       <img
+        id="img"
+        class="img-fluid"
         src="https://images.unsplash.com/photo-1608768557474-d4c5651d3230?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         alt="The Astronomy Picture of the Day"
       />
+      <blockquote class="blockquote">
+        <p id="description">
+          <!-- A well-known quote, contained in a blockquote element. -->
+        </p>
+      </blockquote>
     </main>
     <!-- Bootstrap -->
     <script
@@ -47,5 +55,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <!-- Custom Script -->
     <script src="./app.js"></script>
+    <script src="./api.js"></script>
   </body>
 </html>
