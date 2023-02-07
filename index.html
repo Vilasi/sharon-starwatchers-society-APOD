@@ -23,8 +23,9 @@
   <body>
     <header class="pt-5">
       <h1 class="text-center display-6">Astronomy Photo of the Day</h1>
-      <h1 id="title" class="text-center display-2 ff-quicksand"></h1>
+      <h1 id="title" class="text-center display-2 ff-quicksand" a></h1>
     </header>
+
     <main class="container pt-4 d-flex flex-column align-items-center">
       <form action="" class="row pb-4">
         <div class="input-group mb-3">
@@ -39,18 +40,44 @@
             aria-label="date"
             aria-describedby="date-selector"
           />
-          <button type="submit" class="btn btn-outline-secondary text-light">
+          <button
+            id="submit"
+            type="button"
+            class="submitButton btn btn-outline-success text-light"
+          >
             Submit
+          </button>
+          <button
+            id="jump-to-today"
+            type="button"
+            class="submitButton btn btn-outline-primary text-light"
+          >
+            Jump to Today
           </button>
         </div>
       </form>
       <blockquote class="blockquote mb-5 p-5 shadow rounded-2">
-        <p id="description" class="ch-60"></p>
+        <p id="description" class="ch-60 fs-6"></p>
       </blockquote>
+      <div
+        id="video-div"
+        class="d-none ratio ratio-16x9 border shadow-lg mb-5 rounded-2"
+      >
+        <iframe
+          id="video"
+          width="560"
+          height="315"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
       <img
         id="img"
-        class="img-fluid border shadow-lg mb-5 rounded-2"
-        src="https://images.unsplash.com/photo-1608768557474-d4c5651d3230?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid border shadow mb-5 rounded-2"
+        src=""
         alt="The Astronomy Picture of the Day"
       />
     </main>
