@@ -41,7 +41,6 @@ async function apiCall(date) {
   };
 
   const response = await axios(options);
-  console.log(response);
   return response;
 }
 
@@ -63,7 +62,6 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const response = await apiCall(dateInput.value);
-
     buildDOM(response);
   } catch (error) {
     handleError(error);
