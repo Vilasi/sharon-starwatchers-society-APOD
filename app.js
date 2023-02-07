@@ -42,13 +42,18 @@ async function tryAPI(date) {
   }
 }
 
-function formatDate(date) {
+function formatDate(date, monthDayYear = false) {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
 
+  //   if (monthDayYear) {
+  //     return `${month}-${day}-${year}`;
+  //   }
   return `${year}-${month}-${day}`;
 }
+
+// function formtDateMonthDatYear
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -58,6 +63,8 @@ form.addEventListener('submit', async (e) => {
 window.addEventListener('load', async () => {
   const date = new Date();
   const todaysDate = formatDate(date);
+  //   const input = document.querySelector('#date');
+  //   input.placeholder = formatDate(date, true);
 
   await tryAPI(todaysDate);
 });
