@@ -1,33 +1,6 @@
 const apiKey = 'duTM1WcUS7QLQrUquX9mICHxV1Vctdh9wwqOVeZE';
 const form = document.querySelector('form');
 const dateInput = document.querySelector('#date');
-// const description = document.querySelector('#description');
-// const image = document.querySelector('#img');
-
-//https://api.nasa.gov/planetary/apod?api_key=duTM1WcUS7QLQrUquX9mICHxV1Vctdh9wwqOVeZE
-// {
-//   // `data` is the response that was provided by the server
-//   data: {},
-
-//   // `status` is the HTTP status code from the server response
-//   status: 200,
-
-//   // `statusText` is the HTTP status message from the server response
-//   statusText: 'OK',
-
-//   // `headers` the HTTP headers that the server responded with
-//   // All header names are lowercase and can be accessed using the bracket notation.
-//   // Example: `response.headers['content-type']`
-//   headers: {},
-
-//   // `config` is the config that was provided to `axios` for the request
-//   config: {},
-
-//   // `request` is the request that generated this response
-//   // It is the last ClientRequest instance in node.js (in redirects)
-//   // and an XMLHttpRequest instance in the browser
-//   request: {}
-// }
 
 async function apiCall(date) {
   const options = {
@@ -47,9 +20,11 @@ async function apiCall(date) {
 function buildDOM(response) {
   const image = document.querySelector('#img');
   const description = document.querySelector('#description');
+  const title = document.querySelector('#title');
 
   image.src = response.data.hdurl;
   description.innerText = response.data.explanation;
+  title.innerText = response.data.title;
 }
 
 function handleError(error) {
@@ -57,14 +32,32 @@ function handleError(error) {
   description.innerText = "Sorry, we don't have an image for this request";
 }
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
+async function tryAPI(date) {
   try {
-    const response = await apiCall(dateInput.value);
+    const response = await apiCall(date);
     buildDOM(response);
   } catch (error) {
     handleError(error);
     console.log(error);
   }
+}
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return `${year}-${month}-${day}`;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  await tryAPI(dateInput.value);
+});
+
+window.addEventListener('load', async () => {
+  const date = new Date();
+  const todaysDate = formatDate(date);
+
+  await tryAPI(todaysDate);
 });

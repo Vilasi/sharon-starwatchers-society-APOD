@@ -1,0 +1,12 @@
+:root {
+  --max-text-width: 60ch;
+  --font-family: 'Quicksand', sans-serif;
+}
+
+.ch-60 {
+  max-width: var(--max-text-width);
+}
+
+.ff-quicksand {
+  font-family: var(--font-family);
+}
