@@ -82,6 +82,7 @@ for (const button of submitButtons) {
       await tryAPI(dateInput.value);
     } else if (id === 'jump-to-today') {
       const todaysDate = getTodaysDate();
+      dateInput.value = todaysDate;
       await tryAPI(todaysDate);
     }
   });
